@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header><h3>Control Flows and Error Handling</h3></header>
+    <main>
+      <section>
+        <p>
+          The most basic statement of javascript is Block {}.Which is mostly
+          used with control statements.
+        </p>
+      </section>
+      <section>
+        <span> Select the Languages you know.
+        <select id="languages" multiple>
+            <!-- Choose the language -->
+            <option selected>C</option>
+            <option>C++</option>
+            <option>C#</option>
+            <option>Javascript</option>
+            <option>Php</option>
+            <option>Bash</option>
+        </select>
+        <button>Count the Selected </button>
+    </section>
+    </main>
+    <script>
+
+       // in function if an object passed as param and any change made inside function got reflected back 
+       function updateEmployee(obj,name)
+       {
+            obj["name"]=name;
+       } 
+
+        // Use of for..in
+        var employee={
+            name:"Test User",
+            depart:"IT",
+            role:"Developer"
+        }
+        updateEmployee(employee,"Rakesh");
+        console.log(`After made change the new values of employee object will be ${employee}`)
+        // console.log("Output with for..in loop construct");
+        for(const prop in employee)
+        {
+            console.log(employee[prop]);
+        }
+        
+        //  Use of for..of
+
+       console.log("Output with for..of loop construct");
+       for(const [key,value] of Object.entries(employee))
+       {
+        console.log(`${key}:${value}`);
+       }
+
+
+        const btnCount = document.querySelector('button');
+        function checkCount(){
+            let count=0;
+            var languageList = document.querySelector('select');
+            console.log(`Option Count is :${languageList.options.length}`);
+            for(let i=0;i <languageList.options.length;i++)
+            {
+                if(languageList.options[i].selected)
+                {
+                    count++;
+                }
+            } 
+            return count;
+        }
+        btnCount.addEventListener('click',()=>{
+            
+            const countVal =  checkCount();
+            console.log(`Select Language Count is : ${countVal}`);
+        }); 
+
+        // const languageList = document.querySelector('select');
+        // languageList.addEventListener('onchange',()=>{
+        //     languageList.options.count;
+        // });
+
+      const lightOn = 0;    
+      // so values other than (null,0,false,undefined,"",NaN) are considerd to be true
+      if (lightOn) {
+        console.log("Lights are On");
+      } else {
+        console.log("Lights are Off");
+      }
+      const isOkay = new Boolean(false); //Primitive values
+      const isSet = false;
+      if (isSet) {
+        console.log(`Value of is set is Setted Out to True`);
+      } else {
+        // this is going to be out put
+        console.log(`Value of is set is Setted Out to false`);
+      }
+      // With Example of Primitive Type
+      if (isOkay) {
+        console.log("Is okay is set");
+      } else {
+        console.log("Is okay is not set");
+      }
+
+      // Switch Statement
+      const color = 1;
+      switch (color) {
+        case 1:
+          console.log(`Color is R:${color}`);
+          break;
+        case 2:
+          console.log(`Color is B :${color}`);
+          break;
+        default:
+          console.log("Invalid Color");
+      }
+
+    // Exception Handling using Javascript 
+    
+    try{
+        let answer = 3434/0;
+        if(typeof answer == Number)
+        {
+            console.log(`Answer is ${answer}`);
+        }
+        else{
+            throw new Error("Divide By Zero");
+        }
+    }
+    catch(e)
+    {
+        console.error(e);
+    }
+    finally{
+        console.log(`Script Terminated`);
+    }   
+    </script>
+  </body>
+</html>

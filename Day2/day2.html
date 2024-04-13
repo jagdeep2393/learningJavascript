@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <header>
+        <h4>Scope of Variables in Javascript</h4>
+    </header>
+    <main>
+        <section>
+            <p>
+                <h4>There is Four types of Scope in Javascript</h4>
+                <ol>
+                    <li>Global</li>
+                    <li>Module</li>
+                    <li>Function</li>
+                    <li>Block</li>
+                </ol>
+            </p>
+        </section>
+        <section>
+            <p>
+                <h4>There Following DataTypes is Javascript which are Primitives</h4>
+                <ol>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>boolean</li>
+                    <li>string</li>
+                    <li>number</li>
+                    <li>bigint</li>
+                    <li>symbols</li>
+                    </ol>
+            </p>
+        </section>
+        <section>
+            <p>
+                <h4>There Following Literals in Javascript </h4>
+                <ol>
+                    <li>Array Literals</li>
+                    <li>String Literals</li>
+                    <li>Numeric Literals</li>
+                    <li>Object Literals</li>
+                    <li>RegularExpressions</li>
+                    <li>Strings</li>
+                    </ol>
+            </p>
+        </section>
+        </main>
+
+    <!-- <script>
+        
+    </script> -->
+    <script src="app2.js"> </script>
+    <script src="app.js"> </script>
+    <script>
+        // There is also a type of Declaration known as destructing
+        var employee={
+            "id":1654654,
+            "depart":"IT",
+            "report"
+        };
+        // let say i want value with all keys to kept in seprate variables then
+        // This could be a method, but it need for each value
+        console.log(employee.id);
+        // alternative could be
+        let {id,depart} = employee;
+        console.log(`Employe id :${id}  and Department is ${depart}`);
+        let message = "Hay there it let varaible";
+        var globalMessage = "Hay there it is var variable";
+        const HOME = "Hey there i can'nt be changed";
+      console.log(`Message is ${message}`);
+      console.log(`Message is ${globalMessage}`);
+      console.log(`Message is ${HOME}`);
+      // this is global scope every one Accessible Here
+      function showValues() {
+        //All Accessible Here Because of Lexical Scope Because Variables declared in Global Scope
+        //Declaration of variables in javascript using diffrent methods
+        // using Let
+
+        console.log(`Inside Function showValues Message is ${message}`);
+        console.log(`Inside Function showValues Message is ${globalMessage}`);
+        // This cause an Error
+        // HOME="HELLLOW";
+        console.log(`Inside Function showValues Message is ${HOME}`);
+      }
+      showValues();
+    </script>
+  </body>
+</html>
