@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <p>
+            <h3>
+                
+        </h3>
+    </p>
+    </header>
+    <p>
+        <img src="../images/img1.jpg" alt="Image 1" width="300px" id="imageBox"/ >
+    </p>
+    <button>Btn1</button>
+    <button>Btn2</button>
+    <button>Btn3</button>
+    <button>Btn4</button>
+    <script>
+        
+        // Select an Element using it Tag Name and set value for it textContent Property
+        // let header = document.querySelector('h1');
+        // header.textContent = "Hello World";
+        let imageBox = document.querySelector('img');
+        imageBox.addEventListener('click',()=>{
+            let oldImage = imageBox.getAttribute('src');
+            if(oldImage.indexOf("img2") !==-1)
+            {
+                imageBox.setAttribute('src',"../images/img1.jpg");
+            }
+            else{
+                imageBox.setAttribute('src',"../images/img2.jpg");
+            }
+        });
+        let buttons= document.querySelectorAll('button');
+        buttons[0].addEventListener('click',()=>{ alert("Button One clicked")});
+        buttons[1].addEventListener('click',()=>{ alert("Button Two clicked")});
+        buttons[2].addEventListener('click',()=>{ alert("Button Three clicked")});
+        buttons[3].addEventListener('click',()=>{ alert("Button Four clicked")});
+        let welcomeHeader = document.querySelector('h3');
+        
+        function getUserName(){
+            let userName = prompt("Please Enter Your Name",name);
+            if(!userName)
+            {
+                getUserName();
+            }
+            else{
+                localStorage.setItem('username',userName);
+                welcomeHeader.textContent = localStorage.getItem('username');
+            }
+        }
+        if(!localStorage.getItem('username')){
+            getUserName();
+        }
+        else{
+            welcomeHeader.textContent = localStorage.getItem('username');
+        }
+    </script>
+</body>
+</html>

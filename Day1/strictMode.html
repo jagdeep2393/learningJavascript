@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header><h3>
+
+    </h3></header>
+<script>
+    // IIFE 
+    (function(){
+        var userMessage = prompt("Enter the Message Here");
+        if(!userMessage){
+            userMessage="test Message";
+        } 
+        // else{
+
+        // }
+        document.querySelector('h3').textContent=userMessage;
+    })();
+    // Throw an error because of IIFE's Lexical Scope and it Prevention of variables polluting
+    // console.log(`User Message was ${userMessage}`);
+    </script>
+</body>
+
+</html>
