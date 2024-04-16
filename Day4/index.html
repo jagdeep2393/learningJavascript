@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header><h4>Basic Expressions</h4></header>
+    <main>
+        <section>
+            <form>
+                Enter the age:<input type="number" onclick="return validate(this,18,21);">
+                </form>
+        </section>
+        <section>
+            <header><h3>in operator</h3></header>
+            <p>
+                In operator is used with array and objects to find out the elements existence in that particular object or array.But in operator is only works with index value or key in array or object.Any string value as key should be enclosed in commas. 
+            </p>
+            </section>
+            <section>
+                <header><h3>instanceof operator</h3></header>
+                <p>
+                    instanceof operator is used find out if a variable is instanceof of the object specified.
+                </p>
+                </section>
+        </main>
+    <script>
+        function validate(obj,low,high){
+            const inpAge = obj.value;
+            let response="Invalid";
+            console.log(`Input age is:${inpAge}`);
+            // console.log(inpAge <= high);
+            // console.log(inpAge >= low);
+            if((inpAge <= high) && (inpAge >= low)){
+                response="Valid";
+            }
+           console.log(response);
+        }
+        // in operator example
+
+        let iceCandidates=['172.17.222.130','172.17.58.95','172.17.62.12'];
+        const stunServer={
+            server1:"10.0.0.10",
+            server2:"10.0.0.11",
+            server3:"10.0.0.12",
+            server4:"10.0.0.13"
+        }
+        console.log(stunServer);
+        console.log(`${3 in iceCandidates}`); //Will return false because 0 to 2 index exist in array
+        console.log(`${"server1" in stunServer}`); //true
+        
+        // instanceof 
+        const now = new Date();
+        const today = "2024-04-16";
+        console.log(` Is now is instance of Date ${now instanceof Date}`);
+        console.log(` Is today is instance of Date ${today instanceof Date}`);
+        
+        </script>
+</body>
+</html>

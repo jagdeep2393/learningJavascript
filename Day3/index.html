@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h3>Functions and Its Scopes</h3>
+    </header>
+<main>
+    <section>
+        <header><h4>
+            Function and Scope
+        </h4></header>
+        <p>
+            Every Function have access to variables declared with in the scope of Function and the scope in which function itself is defined, means if a function is declared in global scope then it have access to all the global variable inside it.<strong>variables declared inside the function are not accessible to outside the function.</strong>Also if function is inside a function, it also have access to variables in the scope of itself and it parent function and all the data that is accessible to it parent function.
+        </p>
+        </section>
+        <section>
+            <header><h4>
+                Recursive Function
+            </h4></header>
+            <p>
+                A function when calls itself is known as recurstion. In javascript recurstion can be done in three way.
+                <ol>
+                    <li>By function name</li>
+                    <li>Using a variable that have refrence to function</li>
+                    <li>arguments.callee()</li>
+                    </ol>
+            </p>
+        </section>
+        <section>
+            <header><h4>
+                Clouser 
+            </h4></header>
+            <p>
+                A closure is the combination of nested function and its enviournment in which function itself is declared.It allows function to access the variables of its parent enviournment even parent function had completed it job.
+
+                Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions and grants the inner function full access to all the variables and functions defined inside the outer function (and all other variables and functions that the outer function has access to).
+
+However, the outer function does not have access to the variables and functions defined inside the inner function. This provides a sort of encapsulation for the variables of the inner function.
+
+Also, since the inner function has access to the scope of the outer function, the variables and functions defined in the outer function will live longer than the duration of the outer function execution, if the inner function manages to survive beyond the life of the outer function. A closure is created when the inner function is somehow made available to any scope outside the outer function.
+            </p>
+        </section>
+        <section>
+            <header><h4>
+                Objects with Argumnets  
+            </h4></header>
+            <p>
+                Every Function parameters are stored in an array like object and are accessible using index value.
+                <pre>
+                function test(arg)
+                {
+                    arguments[i];
+                }    
+                </pre>
+            </pre>
+        </section>
+    </main>
+    <script src="app.js"> 
+    </script> 
+</body>
+</html>
