@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Offline Form Submission</title>
+  </head>
+
+  <body>
+    <h1>Offline Form Submission</h1>
+
+    <form id="myForm">
+      <label for="name">Name:</label>
+
+      <input type="text" id="name" name="name" />
+
+      <br />
+
+      <label for="email">Email:</label>
+
+      <input type="email" id="email" name="email" />
+
+      <br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      // Initialize IndexedDB database
+
+      const dbName = "formDataDB";
+      const dbVersion = 1;
+      const storeName = "formDataStore";
+      var request = indexedDB.open(dbName, dbVersion);
+      request.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        db.createObjectStore(storeName, { keyPath: "id", autoIncrement: true });
+      };
+      request.onsuccess = function (event) {
+        console.log("IndexedDB opened successfully");
+      };
+
+      request.onerror = function (event) {
+        console.error("Error opening IndexedDB:", event.target.error);
+      };
+
+      // Submit form data
+
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+          };
+          saveFormData(formData);
+        });
+
+      function saveFormData(formData) {
+        const db = request.result;
+        const transaction = db.transaction([storeName], "readwrite");
+        const store = transaction.objectStore(storeName);
+        const formRequest = store.add(formData);
+        //   console.log(formRequest);
+        formRequest.onsuccess = function (event) {
+          console.log("Form data saved to IndexedDB");
+        };
+        formRequest.onerror = function (event) {
+          console.error("Error saving form data:", event.target.error);
+        };
+      }
+      // Check for internet connection and submit stored form data
+
+      setInterval(function() {
+
+        if (navigator.onLine) {
+
+          submitStoredFormData();
+
+        }
+
+      }, 5000); // Check every 5 seconds
+
+      function submitStoredFormData() {
+        const db = request.result;
+        const transaction = db.transaction([storeName], "readonly");
+        const store = transaction.objectStore(storeName);
+        const formStoreResponse = store.getAll();
+        // console.log(formStoreResponse);
+        formStoreResponse.onsuccess = function (event) {
+          const formDataArray = event.target.result;
+          formDataArray.forEach((formData) => {
+            console.log(formData);
+            // sendHttpRequest(formData);
+          });
+        };
+        formStoreResponse.onerror = function (event) {
+          console.error(
+            "Error retrieving stored form data:",
+            event.target.error
+          );
+        };
+      }
+
+      function sendHttpRequest(formData) {
+        // Replace this with your actual HTTP request logic
+        console.log("Submitting form data:", formData);
+        // Simulate HTTP request
+        setTimeout(function () {
+          console.log("Form data submitted successfully:", formData);
+          // Remove submitted form data from IndexedDB
+          const db = request.result;
+          const transaction = db.transaction([storeName], "readwrite");
+          const store = transaction.objectStore(storeName);
+          const request = store.delete(formData.id);
+          request.onsuccess = function (event) {
+            console.log("Form data removed from IndexedDB:", formData);
+          };
+          request.onerror = function (event) {
+            console.error(
+              "Error removing form data from IndexedDB:",
+              event.target.error
+            );
+          };
+        }, 2000); // Simulate 2 seconds delay for HTTP request
+      }
+    </script>
+  </body>
+</html>

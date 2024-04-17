@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<header>
+    <h3>
+        User Interation
+    </h3>
+</header>
+<main>
+    <section>
+        <header>
+            <h4>
+                Alert,Confirm and Propmt
+            </h4>
+        </header>
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit dignissimos reiciendis, amet tempora sunt harum quo omnis tempore! Soluta, harum rem quisquam recusandae, voluptatum ipsa ullam beatae numquam tempore culpa doloremque nihil dolore earum tempora asperiores laudantium modi quidem repellat, fugit vitae laboriosam autem unde hic sequi. Hic, minus delectus.
+        </p>
+    </section>
+    <section>
+        <header><h4>Table of Numbers</h4></header>
+        <table border="2">
+                <tbody>
+               
+                </tbody>
+            </table>
+        </section>
+</main>
+<script src="app.js"></script>
+<script> 
+    let table  = document.querySelector('tbody');
+    console.log(table);
+    for(let i=1;i<=10;i++)
+    {
+        let tr=document.createElement('tr');
+        for(let j=2;j<=10;j++)
+        {
+            const td = document.createElement('td');
+            td.textContent=(i*j);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+</script>
+</body>
+
+</html>
